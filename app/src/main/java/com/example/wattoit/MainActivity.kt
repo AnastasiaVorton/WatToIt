@@ -5,10 +5,11 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LoginCommunacator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,14 @@ class MainActivity : AppCompatActivity() {
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show()
 //        }
+
+        val loginFragment = LoginActivity()
+        loginFragment.communicate = this
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, loginFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -35,5 +44,22 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun loginButtonsHandler(buttonType: String) {
+        val nextFragment: Fragment?
+
+        if (buttonType == "signIn") {
+            nextFragment = SignInFragment()
+            nextFragment.communicate = this
+        } else {
+            nextFragment = SignUpFragment()
+            nextFragment.communicate = this
+        }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, nextFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
