@@ -5,13 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_login.*
 
-interface LoginCommunacator {
-    fun loginButtonsHandler(buttonType: String)
-}
-
-class LoginActivity : Fragment() {
+class SignUpFragment : Fragment() {
     var communicate: LoginCommunacator? = null
 
     companion object {
@@ -22,18 +17,10 @@ class LoginActivity : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_login, container, false)
+        return inflater.inflate(R.layout.sign_up_fragment, container, false)
     }
 
     override fun onStart() {
         super.onStart()
-
-        toSignInButton.setOnClickListener {
-            communicate?.loginButtonsHandler("signIn")
-        }
-
-        toSignUpButton.setOnClickListener {
-            communicate?.loginButtonsHandler("signUp")
-        }
     }
 }
