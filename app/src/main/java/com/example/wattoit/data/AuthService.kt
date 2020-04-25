@@ -1,15 +1,13 @@
 package com.example.wattoit.data
 
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.GET
+import retrofit2.http.Body
 import retrofit2.http.POST
-import retrofit2.http.Query
 
-interface PictureService {
 
-    @POST("users/login")
-    fun login(
-        @Query("username") usernameValue: String,
-        @Query("password") passwordValue: String
-    ): Call<LoginResponse>
+interface AuthService {
+
+    @POST("users/login/")
+    fun login(@Body credentials: RequestBody): Call<LoginResponse>
 }
