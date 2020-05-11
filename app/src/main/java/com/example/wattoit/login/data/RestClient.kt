@@ -1,4 +1,4 @@
-package com.example.wattoit.data
+package com.example.wattoit.login.data
 
 import android.content.Context
 import com.example.wattoit.BuildConfig

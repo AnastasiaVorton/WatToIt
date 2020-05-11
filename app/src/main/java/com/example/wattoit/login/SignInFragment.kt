@@ -1,4 +1,4 @@
-package com.example.wattoit
+package com.example.wattoit.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.wattoit.data.LoginResponse
-import com.example.wattoit.data.RestClient
+import com.example.wattoit.R
+import com.example.wattoit.login.data.LoginResponse
+import com.example.wattoit.login.data.RestClient
 import com.example.wattoit.data.SessionManager
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import okhttp3.RequestBody
@@ -30,7 +31,7 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         restClient = RestClient()
-        sessionManager = SessionManager(activity!!.applicationContext)
+        sessionManager = SessionManager(requireActivity().applicationContext)
 
         return inflater.inflate(R.layout.sign_in_fragment, container, false)
     }
@@ -41,7 +42,7 @@ class SignInFragment : Fragment() {
         signInButton.setOnClickListener {
             val credentials = jsonLogin(login.text.toString(), password.text.toString())
 
-            restClient.getApiService(activity!!.applicationContext).login(credentials).enqueue(
+            restClient.getApiService(requireActivity().applicationContext).login(credentials).enqueue(
                 object: Callback<LoginResponse> {
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Toast.makeText(activity,

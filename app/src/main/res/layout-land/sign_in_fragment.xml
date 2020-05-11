@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context="login.LoginActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -20,26 +20,27 @@
 
     <EditText
         android:id="@+id/login"
-        android:inputType="text"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="242dp"
+        android:layout_marginTop="180dp"
+        android:autofillHints="login1"
         android:hint="@string/enter_your_login"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="login1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/password"
-        android:inputType="textPassword"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:hint="Enter your password"
+        android:layout_marginTop="40dp"
+        android:autofillHints="1234Password"
+        android:hint="@string/enter_your_password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
@@ -48,11 +49,11 @@
         style="@style/ButtonStyle"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="40dp"
         android:background="@color/colorAccent"
-        android:text="@string/sign_up"
+        android:text="@string/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 </androidx.constraintlayout.widget.ConstraintLayout>
