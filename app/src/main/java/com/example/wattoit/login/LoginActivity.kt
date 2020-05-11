@@ -1,10 +1,11 @@
-package com.example.wattoit
+package com.example.wattoit.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.wattoit.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 interface LoginCommunacator {

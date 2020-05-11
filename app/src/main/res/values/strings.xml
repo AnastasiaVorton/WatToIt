@@ -13,4 +13,15 @@
     <string name="enter_request">Enter your request</string>
     <string name="search_button_text">Search</string>
     <string name="recipe_image">Recipe image</string>
+    <string name="title_activity_front">FrontActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Name and Surname</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="menu_fav">Favourite</string>
+    <string name="menu_recipe">My Recipes</string>
+    <string name="menu_setting">Setting</string>
+    <string name="menu_diet">Diet</string>
+    <string name="menu_log_out">Log out</string>
+    <string name="home_second">Home Second</string>
 </resources>

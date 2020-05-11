@@ -1,15 +1,14 @@
-package com.example.wattoit
+package com.example.wattoit.login
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.example.wattoit.R
 
-import kotlinx.android.synthetic.main.activity_main.*
-
-class MainActivity : AppCompatActivity(), LoginCommunacator {
+class MainActivity : AppCompatActivity(),
+    LoginCommunacator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

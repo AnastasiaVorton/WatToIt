@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_fav">
+
+    <fragment
+        android:id="@+id/nav_fav"
+        android:name="com.example.wattoit.main.ui.fav.FavFragment"
+        android:label="@string/menu_fav"
+        tools:layout="@layout/fragment_fav">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_second"
+        android:name="com.example.wattoit.main.ui.HomeSecondFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_home_second">
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@id/nav_fav" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_nav_home_second_to_nav_recipe"
+            app:destination="@id/nav_recipe" />
+        <action
+            android:id="@+id/action_nav_home_second_to_nav_setting"
+            app:destination="@id/nav_setting" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_recipe"
+        android:name="com.example.wattoit.main.ui.recipe.RecipeFragment"
+        android:label="@string/menu_recipe"
+        tools:layout="@layout/fragment_recipe" >
+        <action
+            android:id="@+id/action_nav_recipe_to_nav_home_second"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.wattoit.main.ui.setting.SettingFragment"
+        android:label="@string/menu_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_nav_setting_to_nav_home_second"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+</navigation>

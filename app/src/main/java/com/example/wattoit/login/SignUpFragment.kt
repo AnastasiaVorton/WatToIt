@@ -1,4 +1,4 @@
-package com.example.wattoit
+package com.example.wattoit.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.wattoit.R
 import com.example.wattoit.data.RegistrationResponse
 import com.example.wattoit.data.RestClient
 import kotlinx.android.synthetic.main.sign_up_fragment.*
@@ -44,7 +45,7 @@ class SignUpFragment : Fragment() {
 
             val credentials = jsonLogin(login.text.toString(), email.text.toString(), password.text.toString())
 
-            restClient.getApiService(activity!!.applicationContext).register(credentials).enqueue(
+            restClient.getApiService(requireActivity().applicationContext).register(credentials).enqueue(
                 object: Callback<RegistrationResponse> {
                     override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
                         Toast.makeText(activity,
