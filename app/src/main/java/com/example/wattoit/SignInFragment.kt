@@ -1,5 +1,6 @@
 package com.example.wattoit
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,12 @@ class SignInFragment : Fragment() {
                             activity, response.body()?.token,
                             Toast.LENGTH_LONG
                         ).show()
+
+                        if (response.code() == 200) {
+                            val intent = Intent(activity, SearchActivity::class.java).apply {}
+                            activity?.startActivity(intent)
+
+                        }
                     }
                 }
             )

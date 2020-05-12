@@ -1,12 +1,12 @@
 package com.example.wattoit.data
 
+import com.example.wattoit.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class RestClient {
-    val BASE_URL = "http://localhost:3000/api/"
 
     var authService: AuthService
 
@@ -17,7 +17,7 @@ class RestClient {
     }
 
     private val retrofit = Retrofit.Builder().apply {
-        baseUrl(BASE_URL)
+        baseUrl(BuildConfig.BASE_URL)
         client(okHttpBuilder.build())
         addConverterFactory(GsonConverterFactory.create())
     }.build()

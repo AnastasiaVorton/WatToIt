@@ -12,3 +12,8 @@ data class LoginResponse(
     @SerializedName("token")
     val token: String
 )
+
+data class RegistrationResponse(
+    @SerializedName("success")
+    val successCode: Int
+)

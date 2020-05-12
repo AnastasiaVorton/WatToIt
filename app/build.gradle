@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.wattoit"
         minSdkVersion 23
@@ -19,6 +19,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', '\"http://3.249.147.66:3000/api/\"'
+        }
+
+        debug {
+            buildConfigField 'String', 'BASE_URL', '\"http://3.249.147.66:3000/api/\"'
         }
     }
 }
@@ -26,16 +31,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'com.google.android.material:material:1.1.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Network
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0' // HTTP Client
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1' // HTTP Client
     implementation 'com.google.code.gson:gson:2.8.5' // Json Parser
 
     // Support for connection parser to retrofit
