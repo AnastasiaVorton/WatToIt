@@ -10,4 +10,7 @@
     <string name="logo">Logo</string>
     <string name="enter_your_login">Enter your login</string>
     <string name="enter_your_password">Enter your password</string>
+    <string name="enter_request">Enter your request</string>
+    <string name="search_button_text">Search</string>
+    <string name="recipe_image">Recipe image</string>
 </resources>
