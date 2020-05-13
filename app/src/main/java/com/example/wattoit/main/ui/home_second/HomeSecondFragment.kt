@@ -1,4 +1,4 @@
-package com.example.wattoit.main.ui
+package com.example.wattoit.main.ui.home_second
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,7 +12,8 @@ import com.example.wattoit.R
 class HomeSecondFragment : Fragment() {
 
     companion object {
-        fun newInstance() = HomeSecondFragment()
+        fun newInstance() =
+            HomeSecondFragment()
     }
 
     private lateinit var viewModel: HomeSecondViewModel
