@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
-import com.example.wattoit.SearchActivity
+import com.example.wattoit.main.ui.search.SearchActivity
 import com.example.wattoit.login.data.LoginResponse
 import com.example.wattoit.login.data.RestClient
+import com.example.wattoit.main.ui.search.SearchFragment
 import com.example.wattoit.data.SessionManager
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import okhttp3.RequestBody
@@ -57,7 +58,7 @@ class SignInFragment : Fragment() {
                         sessionManager.saveAuthToken(response.body()!!.token)
 
                         if (response.code() == 200) {
-                            val intent = Intent(activity, SearchActivity::class.java).apply {}
+                            val intent = Intent(activity, SearchFragment::class.java).apply {}
                             activity?.startActivity(intent)
 
                         }

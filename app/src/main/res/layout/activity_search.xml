@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".main.ui.search.SearchFragment">
+
+    <TextView
+        android:id="@+id/text_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        tools:ignore="MissingConstraints"
+        tools:visibility="gone" />
 
     <EditText
         android:id="@+id/search_bar"
@@ -15,7 +27,7 @@
         android:maxLines="1"
         android:text=""
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/find_button"
+        app:layout_constraintRight_toLeftOf="@id/find_button"
         app:layout_constraintTop_toTopOf="parent"
         android:importantForAutofill="no" />
 
@@ -26,7 +38,7 @@
         android:background="@color/colorPrimaryDark"
         android:textSize="12sp"
         android:text="@string/search_button_text"
-        app:layout_constraintBottom_toTopOf="@+id/query_res"
+        app:layout_constraintBottom_toTopOf="@id/query_res"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -40,7 +52,7 @@
         android:text="Saved recipes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
         />
 
 
@@ -51,13 +63,13 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar" />
+        app:layout_constraintTop_toBottomOf="@id/search_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipiesRView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/query_res"
+        app:layout_constraintTop_toBottomOf="@id/query_res"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

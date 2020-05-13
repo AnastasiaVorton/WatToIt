@@ -22,7 +22,7 @@
 
     <Button
         android:id="@+id/nextButton"
-        style="@style/ButtonStyle"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="110dp"
         android:layout_height="48dp"
         android:layout_marginStart="150dp"
@@ -33,7 +33,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list"
-        app:layout_constraintVertical_bias="0.911" />
+        app:layout_constraintVertical_bias="0.911"
+        app:rippleColor="@color/colorPrimaryDark" />
 
     <ListView
         android:id="@+id/list"

@@ -53,18 +53,6 @@ class FrontActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.front, menu)
         return true
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_settings -> {
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.container, SearchFragment.newInstance())
-                    .commitNow()
-                true
-
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)

@@ -1,9 +1,10 @@
-package com.example.wattoit
+package com.example.wattoit.main.ui.search
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wattoit.R
 import com.example.wattoit.data.RecipeSearchResponse
 import com.example.wattoit.data.RestClient
 import com.example.wattoit.data.localDB.RecipeDatabase

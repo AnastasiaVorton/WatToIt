@@ -31,12 +31,15 @@
         <action
             android:id="@+id/action_nav_home_second_to_nav_log_out"
             app:destination="@id/nav_log_out" />
+        <action
+            android:id="@+id/action_nav_home_second_to_nav_search"
+            app:destination="@id/nav_search" />
     </fragment>
     <fragment
         android:id="@+id/nav_search"
         android:name="com.example.wattoit.main.ui.search.SearchFragment"
         android:label="@string/menu_search"
-        tools:layout="@layout/fragment_search">
+        tools:layout="@layout/activity_search">
 
         <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
