@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,6 +15,7 @@ import com.example.wattoit.domain.entity.Recipe
 import com.example.wattoit.login.data.RecipeSearchResponse
 import com.example.wattoit.login.data.RestClient
 import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.activity_search.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -29,25 +28,26 @@ class SearchFragment : Fragment() {
     lateinit var adapter: RecipeAdapter
     lateinit var recipeDatabase: RecipeDatabase
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         searchViewModel =
             ViewModelProviders.of(this).get(SearchViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_recipe, container, false)
-        val textView: TextView = root.findViewById(R.id.text_recipe)
+        val root = inflater.inflate(R.layout.activity_search, container, false)
         searchViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            text_search.text = it
         })
 
         restClient = RestClient()
         recipeDatabase = RecipeDatabase.getInstance(this@SearchFragment.requireContext())
 
-        find_button.setOnClickListener {
+        root.find_button.setOnClickListener {
             search()
         }
 
-        find_button2.setOnClickListener {
+        root.find_button2.setOnClickListener {
             toSaved()
         }
         return root
