@@ -54,4 +54,24 @@
             android:id="@+id/action_nav_setting_to_nav_home_second"
             app:destination="@id/nav_home_second" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_diet"
+        android:name="com.example.wattoit.main.ui.diet.DietFragment"
+        android:label="@string/menu_diet"
+        tools:layout="@layout/fragment_diet" >
+        <action
+            android:id="@+id/action_nav_diet_to_nav_home_second"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_log_out"
+        android:name="com.example.wattoit.main.ui.log_out.LogOutFragment"
+        android:label="@string/menu_log_out"
+        tools:layout="@layout/fragment_log_out" >
+        <action
+            android:id="@+id/action_nav_log_out_to_nav_home_second"
+            app:destination="@id/nav_home_second" />
+    </fragment>
 </navigation>

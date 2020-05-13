@@ -22,7 +22,7 @@ class RecipeFragment : Fragment() {
         recipeViewModel =
             ViewModelProviders.of(this).get(RecipeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_recipe, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
+        val textView: TextView = root.findViewById(R.id.text_recipe)
         recipeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
