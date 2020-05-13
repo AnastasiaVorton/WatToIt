@@ -13,4 +13,5 @@
     <string name="enter_request">Enter your request</string>
     <string name="search_button_text">Search</string>
     <string name="recipe_image">Recipe image</string>
+    <string name="title_activity_recipe_view">RecipeViewActivity</string>
 </resources>
