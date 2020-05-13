@@ -1,10 +1,11 @@
-package com.example.wattoit
+package com.example.wattoit.main.ui.search
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wattoit.R
 import com.example.wattoit.domain.entity.Recipe
 import com.example.wattoit.utils.downloadImage
 import com.example.wattoit.utils.inflate

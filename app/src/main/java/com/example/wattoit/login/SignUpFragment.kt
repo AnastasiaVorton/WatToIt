@@ -10,7 +10,8 @@ import androidx.fragment.app.Fragment
 import com.example.wattoit.R
 import com.example.wattoit.login.data.RegistrationResponse
 import com.example.wattoit.login.data.RestClient
-import com.example.wattoit.SearchActivity
+import com.example.wattoit.main.ui.search.SearchActivity
+import com.example.wattoit.main.ui.search.SearchFragment
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -58,7 +59,7 @@ class SignUpFragment : Fragment() {
                         response: retrofit2.Response<RegistrationResponse>
                     ) {
                         if (response.code() == 200) {
-                            val intent = Intent(activity, SearchActivity::class.java).apply {}
+                            val intent = Intent(activity, SearchFragment::class.java).apply {}
                             activity?.startActivity(intent)
                         } else if (response.code() == 400) {
                             Toast.makeText(activity,
