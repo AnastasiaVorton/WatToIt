@@ -1,4 +1,4 @@
-package com.example.wattoit.main.ui
+package com.example.wattoit.main.ui.home_second
 
 import androidx.lifecycle.ViewModel
 
