@@ -7,7 +7,7 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 
-interface AuthService {
+interface RecipeService {
 
     @Headers("Content-Type: application/json")
     @POST("users/login/")
