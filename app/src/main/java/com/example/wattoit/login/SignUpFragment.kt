@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
-import com.example.wattoit.data.RegistrationResponse
-import com.example.wattoit.data.RestClient
+import com.example.wattoit.login.data.RegistrationResponse
+import com.example.wattoit.login.data.RestClient
+import com.example.wattoit.SearchActivity
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject

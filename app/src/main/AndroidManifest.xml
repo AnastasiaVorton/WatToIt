@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".SearchActivity" />
         <activity android:name=".recipe.CreateRecipe" />
         <activity
             android:name=".main.FrontActivity"
