@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit
 class RestClient {
 
     var authService: AuthService
+    var searchService: SearchService
 
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder().apply {
         connectTimeout(60, TimeUnit.SECONDS)
@@ -24,5 +25,6 @@ class RestClient {
 
     init {
         authService = retrofit.create(AuthService::class.java)
+        searchService = retrofit.create(SearchService::class.java)
     }
 }
