@@ -1,28 +1,35 @@
 package com.example.wattoit.data
 
+import android.content.Context
 import com.example.wattoit.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 class RestClient {
+    private lateinit var apiService: RecipeService
 
-    var authService: AuthService
+    fun getApiService(context: Context): RecipeService {
 
-    private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder().apply {
-        connectTimeout(60, TimeUnit.SECONDS)
-        readTimeout(60, TimeUnit.SECONDS)
-        writeTimeout(60, TimeUnit.SECONDS)
+        if (!::apiService.isInitialized) {
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okhttpClient(context))
+                .build()
+
+            apiService = retrofit.create(RecipeService::class.java)
+        }
+
+        return apiService
     }
 
-    private val retrofit = Retrofit.Builder().apply {
-        baseUrl(BuildConfig.BASE_URL)
-        client(okHttpBuilder.build())
-        addConverterFactory(GsonConverterFactory.create())
-    }.build()
-
-    init {
-        authService = retrofit.create(AuthService::class.java)
+    /**
+     * Initialize OkhttpClient with our interceptor
+     */
+    private fun okhttpClient(context: Context): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor(context))
+            .build()
     }
 }

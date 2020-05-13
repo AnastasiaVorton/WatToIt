@@ -44,7 +44,7 @@ class SignUpFragment : Fragment() {
 
             val credentials = jsonLogin(login.text.toString(), email.text.toString(), password.text.toString())
 
-            restClient.authService.register(credentials).enqueue(
+            restClient.getApiService(activity!!.applicationContext).register(credentials).enqueue(
                 object: Callback<RegistrationResponse> {
                     override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
                         Toast.makeText(activity,
@@ -58,6 +58,9 @@ class SignUpFragment : Fragment() {
                         if (response.code() == 200) {
                             val intent = Intent(activity, SearchActivity::class.java).apply {}
                             activity?.startActivity(intent)
+                        } else if (response.code() == 400) {
+                            Toast.makeText(activity,
+                                response.message(), Toast.LENGTH_LONG).show()
                         }
                     }
                 }

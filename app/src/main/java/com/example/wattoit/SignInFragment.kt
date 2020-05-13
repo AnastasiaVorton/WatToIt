@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.data.LoginResponse
 import com.example.wattoit.data.RestClient
+import com.example.wattoit.data.SessionManager
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -18,6 +19,7 @@ import retrofit2.Callback
 class SignInFragment : Fragment() {
     var communicate: LoginCommunacator? = null
     lateinit var restClient: RestClient
+    lateinit var sessionManager: SessionManager
 
     companion object {
         fun newInstance() = LoginActivity()
@@ -28,6 +30,7 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         restClient = RestClient()
+        sessionManager = SessionManager(activity!!.applicationContext)
 
         return inflater.inflate(R.layout.sign_in_fragment, container, false)
     }
@@ -38,7 +41,7 @@ class SignInFragment : Fragment() {
         signInButton.setOnClickListener {
             val credentials = jsonLogin(login.text.toString(), password.text.toString())
 
-            restClient.authService.login(credentials).enqueue(
+            restClient.getApiService(activity!!.applicationContext).login(credentials).enqueue(
                 object: Callback<LoginResponse> {
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Toast.makeText(activity,
@@ -49,10 +52,7 @@ class SignInFragment : Fragment() {
                         call: Call<LoginResponse>,
                         response: retrofit2.Response<LoginResponse>
                     ) {
-                        Toast.makeText(
-                            activity, response.body()?.token,
-                            Toast.LENGTH_LONG
-                        ).show()
+                        sessionManager.saveAuthToken(response.body()!!.token)
 
                         if (response.code() == 200) {
                             val intent = Intent(activity, SearchActivity::class.java).apply {}
