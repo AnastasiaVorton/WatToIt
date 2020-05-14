@@ -78,9 +78,7 @@ class SearchFragment : Fragment() {
     private fun search() {
         val q = search_bar.text.toString()
         println(q)
-        val token =
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiaWQiOiI4YjdjNjU4ZS0wYjkwLTQ3MWMtOTI4MC0zN2FmNDlkNDM4ZGMiLCJ1c2VybmFtZSI6ImJha2xhbiIsImVtYWlsIjoic29iYWthQHNvYmFrYS5wZXMifSwiaWF0IjoxNTg5MzgwMTk4LCJleHAiOjE1ODk0MTYxOTh9.Pr4aTiaisEbKVS3tmcWxLPUPxqowiTMDuRlXbcc6Ig4"
-        restClient.getApiService(requireActivity().applicationContext).findRecipes(token, q)
+        restClient.getSearchService(requireActivity().applicationContext).findRecipes(q)
             .enqueue(
                 object : Callback<RecipeSearchResponse> {
                     override fun onFailure(call: Call<RecipeSearchResponse>, t: Throwable) {

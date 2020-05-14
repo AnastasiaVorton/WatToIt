@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface SearchService {
     @GET("search")
     fun findRecipes(
-        @Header("Authorization") token: String,
+//        @Header("Authorization") token: String,
         @Query("q") q: String
     ): Call<RecipeSearchResponse>
 }
