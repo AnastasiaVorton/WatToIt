@@ -23,7 +23,6 @@ import retrofit2.Call
 import retrofit2.Callback
 
 class SearchFragment : Fragment() {
-
     private lateinit var searchViewModel: SearchViewModel
     lateinit var restClient: RestClient
     lateinit var adapter: RecipeAdapter
@@ -76,52 +75,51 @@ class SearchFragment : Fragment() {
         }
     }
 
-
     private fun search() {
         val q = search_bar.text.toString()
         println(q)
         val token =
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOnsiaWQiOiI4YjdjNjU4ZS0wYjkwLTQ3MWMtOTI4MC0zN2FmNDlkNDM4ZGMiLCJ1c2VybmFtZSI6ImJha2xhbiIsImVtYWlsIjoic29iYWthQHNvYmFrYS5wZXMifSwiaWF0IjoxNTg5MzgwMTk4LCJleHAiOjE1ODk0MTYxOTh9.Pr4aTiaisEbKVS3tmcWxLPUPxqowiTMDuRlXbcc6Ig4"
-        restClient.searchService.findRecipes(token, q).enqueue(
-            object : Callback<RecipeSearchResponse> {
-                override fun onFailure(call: Call<RecipeSearchResponse>, t: Throwable) {
-                    println("oh no")
-                    Toast.makeText(
-                        this@SearchFragment.context,
-                        "Error", Toast.LENGTH_LONG
-                    ).show()
-                }
+        restClient.getApiService(requireActivity().applicationContext).findRecipes(token, q)
+            .enqueue(
+                object : Callback<RecipeSearchResponse> {
+                    override fun onFailure(call: Call<RecipeSearchResponse>, t: Throwable) {
+                        println("oh no")
+                        Toast.makeText(
+                            this@SearchFragment.context,
+                            "Error", Toast.LENGTH_LONG
+                        ).show()
+                    }
 
-                override fun onResponse(
-                    call: Call<RecipeSearchResponse>,
-                    response: retrofit2.Response<RecipeSearchResponse>
-                ) {
-                    println("hey")
-                    val clickListener: MyItemOnClickListener = object :
-                        MyItemOnClickListener {
-                        override fun onClick(recipe: Recipe) {
-                            GlobalScope.launch {
-                                recipeDatabase.recipeDao().insertRecipe(recipe)
+                    override fun onResponse(
+                        call: Call<RecipeSearchResponse>,
+                        response: retrofit2.Response<RecipeSearchResponse>
+                    ) {
+                        println("hey")
+                        val clickListener: MyItemOnClickListener = object :
+                            MyItemOnClickListener {
+                            override fun onClick(recipe: Recipe) {
+                                GlobalScope.launch {
+                                    recipeDatabase.recipeDao().insertRecipe(recipe)
+                                }
                             }
                         }
-                    }
-                    println(response.body().toString())
-                    if (isOkResponseCode(response.code())) {
-                        val recipes = response.body()?.recipes?.map { e -> e.recipe }
-                        adapter = recipes?.let {
-                            RecipeAdapter(
-                                it,
-                                clickListener
-                            )
-                        }!!
-                        val lManager = LinearLayoutManager(this@SearchFragment.requireContext())
-                        recipiesRView.layoutManager = lManager
-                        recipiesRView.adapter = adapter
-                        println("OH YEAAAH")
+                        println(response.body().toString())
+                        if (isOkResponseCode(response.code())) {
+                            val recipes = response.body()?.recipes?.map { e -> e.recipe }
+                            adapter = recipes?.let {
+                                RecipeAdapter(
+                                    it,
+                                    clickListener
+                                )
+                            }!!
+                            val lManager = LinearLayoutManager(this@SearchFragment.requireContext())
+                            recipiesRView.layoutManager = lManager
+                            recipiesRView.adapter = adapter
+                            println("OH YEAAAH")
+                        }
                     }
                 }
-            }
-        )
-
+            )
     }
 }

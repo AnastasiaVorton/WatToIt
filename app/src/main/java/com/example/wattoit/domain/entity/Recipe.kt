@@ -6,12 +6,12 @@ import java.io.Serializable
 
 @Entity
 data class Recipe(
-val label: String,
-@PrimaryKey
-val url: String,
-val image: String,
-val dietLabels: ArrayList<String>,
-val healthLabels: ArrayList<String>,
-val ingredientLines: ArrayList<String>,
-val calories: Double
-): Serializable
+    val label: String,
+    @PrimaryKey
+    val url: String,
+    val image: String,
+    val dietLabels: ArrayList<String>,
+    val healthLabels: ArrayList<String>,
+    val ingredientLines: ArrayList<String>,
+    val calories: Double
+) : Serializable

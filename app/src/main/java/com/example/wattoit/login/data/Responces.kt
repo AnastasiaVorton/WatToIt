@@ -1,6 +1,5 @@
 package com.example.wattoit.login.data
 
-
 import com.example.wattoit.domain.entity.Recipe
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -31,6 +30,5 @@ data class RecipeSearchResponse(
 
 data class RecipeResponse(
     @SerializedName("recipe")
-    val recipe:Recipe
-): Serializable
-
+    val recipe: Recipe
+) : Serializable

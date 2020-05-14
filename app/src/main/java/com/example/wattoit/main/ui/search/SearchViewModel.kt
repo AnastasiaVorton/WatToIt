@@ -8,5 +8,6 @@ class SearchViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
         value = ""
     }
+
     val text: LiveData<String> = _text
 }

@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
+import com.example.wattoit.data.SessionManager
 import com.example.wattoit.login.data.LoginResponse
 import com.example.wattoit.login.data.RestClient
 import com.example.wattoit.main.FrontActivity
 import com.example.wattoit.utils.isOkResponseCode
-import com.example.wattoit.main.ui.search.SearchFragment
-import com.example.wattoit.data.SessionManager
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -45,28 +44,29 @@ class SignInFragment : Fragment() {
         signInButton.setOnClickListener {
             val credentials = jsonLogin(login.text.toString(), password.text.toString())
 
-            restClient.authService.login(credentials).enqueue(
-                object : Callback<LoginResponse> {
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(
-                            activity,
-                            "Error", Toast.LENGTH_LONG
-                        ).show()
-                    }
+            restClient.getApiService(requireActivity().applicationContext).login(credentials)
+                .enqueue(
+                    object : Callback<LoginResponse> {
+                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            Toast.makeText(
+                                activity,
+                                "Error", Toast.LENGTH_LONG
+                            ).show()
+                        }
 
-                    override fun onResponse(
-                        call: Call<LoginResponse>,
-                        response: retrofit2.Response<LoginResponse>
-                    ) {
-                        sessionManager.saveAuthToken(response.body()!!.token)
+                        override fun onResponse(
+                            call: Call<LoginResponse>,
+                            response: retrofit2.Response<LoginResponse>
+                        ) {
+                            sessionManager.saveAuthToken(response.body()!!.token)
 
-                        if (isOkResponseCode(response.code())) {
-                            val intent = Intent(activity, FrontActivity::class.java).apply {}
-                            activity?.startActivity(intent)
+                            if (isOkResponseCode(response.code())) {
+                                val intent = Intent(activity, FrontActivity::class.java).apply {}
+                                activity?.startActivity(intent)
+                            }
                         }
                     }
-                }
-            )
+                )
         }
     }
 

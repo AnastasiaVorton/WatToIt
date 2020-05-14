@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.wattoit.R
 
 class FavFragment : Fragment() {
-
     private lateinit var favViewModel: FavViewModel
 
     override fun onCreateView(
