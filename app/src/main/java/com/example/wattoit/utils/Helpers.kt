@@ -20,3 +20,5 @@ fun ImageView.downloadImage(url: String?) {
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
 }
+
+fun isOkResponseCode(code: Int): Boolean = code in 200 until 300

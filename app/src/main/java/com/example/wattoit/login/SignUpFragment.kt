@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import com.example.wattoit.R
 import com.example.wattoit.login.data.RegistrationResponse
 import com.example.wattoit.login.data.RestClient
-import com.example.wattoit.main.ui.search.SearchActivity
 import com.example.wattoit.main.ui.search.SearchFragment
+import com.example.wattoit.utils.isOkResponseCode
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -39,9 +39,11 @@ class SignUpFragment : Fragment() {
         super.onStart()
 
         signUpButton.setOnClickListener {
-            if (password.text.toString() != passwordRepeat.text.toString()){
-                Toast.makeText(activity,
-                    "Passwords don't match", Toast.LENGTH_LONG).show()
+            if (password.text.toString() != passwordRepeat.text.toString()) {
+                Toast.makeText(
+                    activity,
+                    "Passwords don't match", Toast.LENGTH_LONG
+                ).show()
                 return@setOnClickListener
             }
 
@@ -50,15 +52,17 @@ class SignUpFragment : Fragment() {
             restClient.getApiService(requireActivity().applicationContext).register(credentials).enqueue(
                 object: Callback<RegistrationResponse> {
                     override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
-                        Toast.makeText(activity,
-                            "Error", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            activity,
+                            "Error", Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
                         call: Call<RegistrationResponse>,
                         response: retrofit2.Response<RegistrationResponse>
                     ) {
-                        if (response.code() == 200) {
+                        if (isOkResponseCode(response.code())) {
                             val intent = Intent(activity, SearchFragment::class.java).apply {}
                             activity?.startActivity(intent)
                         } else if (response.code() == 400) {
@@ -74,7 +78,8 @@ class SignUpFragment : Fragment() {
     private fun createJsonRequestBody(vararg params: Pair<String, String>) =
         RequestBody.create(
             okhttp3.MediaType.parse("application/json; charset=utf-8"),
-            JSONObject(mapOf(*params)).toString())
+            JSONObject(mapOf(*params)).toString()
+        )
 
 
     private fun jsonLogin(username: String, email: String, password: String) =

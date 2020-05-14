@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
-import com.example.wattoit.main.ui.search.SearchActivity
 import com.example.wattoit.login.data.LoginResponse
 import com.example.wattoit.login.data.RestClient
+import com.example.wattoit.main.FrontActivity
+import com.example.wattoit.utils.isOkResponseCode
 import com.example.wattoit.main.ui.search.SearchFragment
 import com.example.wattoit.data.SessionManager
 import kotlinx.android.synthetic.main.sign_in_fragment.*
@@ -44,11 +45,13 @@ class SignInFragment : Fragment() {
         signInButton.setOnClickListener {
             val credentials = jsonLogin(login.text.toString(), password.text.toString())
 
-            restClient.getApiService(requireActivity().applicationContext).login(credentials).enqueue(
-                object: Callback<LoginResponse> {
+            restClient.authService.login(credentials).enqueue(
+                object : Callback<LoginResponse> {
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(activity,
-                            "Error", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            activity,
+                            "Error", Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
@@ -57,10 +60,9 @@ class SignInFragment : Fragment() {
                     ) {
                         sessionManager.saveAuthToken(response.body()!!.token)
 
-                        if (response.code() == 200) {
-                            val intent = Intent(activity, SearchFragment::class.java).apply {}
+                        if (isOkResponseCode(response.code())) {
+                            val intent = Intent(activity, FrontActivity::class.java).apply {}
                             activity?.startActivity(intent)
-
                         }
                     }
                 }
@@ -71,7 +73,8 @@ class SignInFragment : Fragment() {
     private fun createJsonRequestBody(vararg params: Pair<String, String>) =
         RequestBody.create(
             okhttp3.MediaType.parse("application/json; charset=utf-8"),
-            JSONObject(mapOf(*params)).toString())
+            JSONObject(mapOf(*params)).toString()
+        )
 
 
     private fun jsonLogin(username: String, password: String) =
