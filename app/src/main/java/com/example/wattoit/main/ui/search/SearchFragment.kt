@@ -14,6 +14,7 @@ import com.example.wattoit.data.localDB.RecipeDatabase
 import com.example.wattoit.domain.entity.Recipe
 import com.example.wattoit.login.data.RecipeSearchResponse
 import com.example.wattoit.login.data.RestClient
+import com.example.wattoit.utils.isOkResponseCode
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.view.*
 import kotlinx.coroutines.GlobalScope
@@ -33,9 +34,15 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        searchViewModel =
-            ViewModelProviders.of(this).get(SearchViewModel::class.java)
-        val root = inflater.inflate(R.layout.activity_search, container, false)
+        searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        val root = inflater.inflate(R.layout.activity_search, container, false).apply {
+            find_button.setOnClickListener {
+                search()
+            }
+            find_button2.setOnClickListener {
+                toSaved()
+            }
+        }
         searchViewModel.text.observe(viewLifecycleOwner, Observer {
             text_search.text = it
         })
@@ -43,13 +50,6 @@ class SearchFragment : Fragment() {
         restClient = RestClient()
         recipeDatabase = RecipeDatabase.getInstance(this@SearchFragment.requireContext())
 
-        root.find_button.setOnClickListener {
-            search()
-        }
-
-        root.find_button2.setOnClickListener {
-            toSaved()
-        }
         return root
     }
 
@@ -105,7 +105,8 @@ class SearchFragment : Fragment() {
                             }
                         }
                     }
-                    if (response.code() == 200) {
+                    println(response.body().toString())
+                    if (isOkResponseCode(response.code())) {
                         val recipes = response.body()?.recipes?.map { e -> e.recipe }
                         adapter = recipes?.let {
                             RecipeAdapter(
