@@ -7,7 +7,6 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.wattoit.domain.entity.Recipe
 
-
 @Database(
     entities = [Recipe::class],
     version = 1
@@ -15,7 +14,6 @@ import com.example.wattoit.domain.entity.Recipe
 
 @TypeConverters(Converters::class)
 abstract class RecipeDatabase : RoomDatabase() {
-
     companion object {
         @Volatile
         private var INSTANCE: RecipeDatabase? = null
@@ -31,5 +29,6 @@ abstract class RecipeDatabase : RoomDatabase() {
             }
         }
     }
+
     abstract fun recipeDao(): RecipeDAO
 }

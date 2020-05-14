@@ -5,8 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.wattoit.domain.entity.Recipe
-import io.reactivex.Single
-
 
 @Dao
 interface RecipeDAO {

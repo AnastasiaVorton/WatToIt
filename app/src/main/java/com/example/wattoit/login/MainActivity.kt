@@ -1,24 +1,16 @@
 package com.example.wattoit.login
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
 
-class MainActivity : AppCompatActivity(),
-    LoginCommunacator {
-
+class MainActivity : AppCompatActivity(), LoginCommunacator {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setSupportActionBar(toolbar)
-//
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
 
         val loginFragment = LoginActivity()
         loginFragment.communicate = this

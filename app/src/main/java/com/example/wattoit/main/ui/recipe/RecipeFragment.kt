@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.wattoit.R
 
 class RecipeFragment : Fragment() {
-
     private lateinit var recipeViewModel: RecipeViewModel
 
     override fun onCreateView(

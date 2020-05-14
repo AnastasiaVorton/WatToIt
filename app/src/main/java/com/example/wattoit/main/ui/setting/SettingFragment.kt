@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.wattoit.R
 
 class SettingFragment : Fragment() {
-
     private lateinit var settingViewModel: SettingViewModel
 
     override fun onCreateView(

@@ -2,7 +2,6 @@ package com.example.wattoit.main
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,14 +11,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.wattoit.R
-import com.example.wattoit.main.ui.search.SearchFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
-
 class FrontActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +36,12 @@ class FrontActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_search, R.id.nav_fav, R.id.nav_recipe, R.id.nav_setting, R.id.nav_diet, R.id.nav_log_out
+                R.id.nav_search,
+                R.id.nav_fav,
+                R.id.nav_recipe,
+                R.id.nav_setting,
+                R.id.nav_diet,
+                R.id.nav_log_out
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

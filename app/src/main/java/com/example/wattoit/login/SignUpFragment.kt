@@ -47,31 +47,35 @@ class SignUpFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val credentials = jsonLogin(login.text.toString(), email.text.toString(), password.text.toString())
+            val credentials =
+                jsonLogin(login.text.toString(), email.text.toString(), password.text.toString())
 
-            restClient.getApiService(requireActivity().applicationContext).register(credentials).enqueue(
-                object: Callback<RegistrationResponse> {
-                    override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
-                        Toast.makeText(
-                            activity,
-                            "Error", Toast.LENGTH_LONG
-                        ).show()
-                    }
+            restClient.getApiService(requireActivity().applicationContext).register(credentials)
+                .enqueue(
+                    object : Callback<RegistrationResponse> {
+                        override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
+                            Toast.makeText(
+                                activity,
+                                "Error", Toast.LENGTH_LONG
+                            ).show()
+                        }
 
-                    override fun onResponse(
-                        call: Call<RegistrationResponse>,
-                        response: retrofit2.Response<RegistrationResponse>
-                    ) {
-                        if (isOkResponseCode(response.code())) {
-                            val intent = Intent(activity, SearchFragment::class.java).apply {}
-                            activity?.startActivity(intent)
-                        } else if (response.code() == 400) {
-                            Toast.makeText(activity,
-                                response.message(), Toast.LENGTH_LONG).show()
+                        override fun onResponse(
+                            call: Call<RegistrationResponse>,
+                            response: retrofit2.Response<RegistrationResponse>
+                        ) {
+                            if (isOkResponseCode(response.code())) {
+                                val intent = Intent(activity, SearchFragment::class.java).apply {}
+                                activity?.startActivity(intent)
+                            } else {
+                                Toast.makeText(
+                                    activity,
+                                    response.message(), Toast.LENGTH_LONG
+                                ).show()
+                            }
                         }
                     }
-                }
-            )
+                )
         }
     }
 

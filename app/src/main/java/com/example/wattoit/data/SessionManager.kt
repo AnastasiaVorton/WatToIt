@@ -7,10 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 /**
  * Session manager to save and fetch data from SharedPreferences
  */
-class SessionManager (context: Context) {
+class SessionManager(context: Context) {
     val APP_PREFERENCES = "mysharedprefs"
 
-    private var prefs: SharedPreferences = context.getSharedPreferences(APP_PREFERENCES,
+    private var prefs: SharedPreferences = context.getSharedPreferences(
+        APP_PREFERENCES,
         AppCompatActivity.MODE_PRIVATE
     )
 

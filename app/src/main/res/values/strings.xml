@@ -26,4 +26,6 @@
     <string name="menu_log_out">Log out</string>
     <string name="home_second">Home Second</string>
     <string name="title_activity_recipe_view">RecipeViewActivity</string>
+    <string name="no_diet_labels_placeholder">No diet labels assigned</string>
+    <string name="no_ingredients_placeholder">No ingredients required for this recipe</string>
 </resources>

@@ -14,10 +14,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".RecipeViewActivity"
+            android:name=".main.ui.search.RecipeViewActivity"
             android:label="@string/title_activity_recipe_view"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchActivity" />
         <activity android:name=".recipe.CreateRecipe" />
         <activity
             android:name=".main.FrontActivity"

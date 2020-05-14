@@ -1,16 +1,14 @@
 package com.example.wattoit.main.ui.home_second
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.wattoit.R
 
-
 class HomeSecondFragment : Fragment() {
-
     companion object {
         fun newInstance() =
             HomeSecondFragment()
@@ -29,5 +27,4 @@ class HomeSecondFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeSecondViewModel::class.java)
     }
-
 }
