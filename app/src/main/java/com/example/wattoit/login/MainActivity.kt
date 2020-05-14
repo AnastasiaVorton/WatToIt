@@ -6,8 +6,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
+import com.example.wattoit.interfaces.Communicator
 
-class MainActivity : AppCompatActivity(), LoginCommunacator {
+class MainActivity : AppCompatActivity(), Communacator {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity(), LoginCommunacator {
         }
     }
 
-    override fun loginButtonsHandler(buttonType: String) {
+    override fun buttonsHandler(buttonType: String) {
         val nextFragment: Fragment?
 
         if (buttonType == "signIn") {

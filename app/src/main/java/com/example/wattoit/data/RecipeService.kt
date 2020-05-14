@@ -8,6 +8,10 @@ import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
+data class DietBody(
+    val diet: String
+)
+
 interface RecipeService {
     @Headers("Content-Type: application/json")
     @POST("users/login/")
@@ -16,4 +20,7 @@ interface RecipeService {
     @Headers("Content-Type: application/json")
     @POST("users/")
     fun register(@Body credentials: RequestBody): Call<RegistrationResponse>
+
+    @POST("preferences/diet/set/")
+    fun setDiet(@Body dietData: DietBody): Call<RegistrationResponse>
 }

@@ -13,14 +13,16 @@ import com.example.wattoit.login.data.LoginResponse
 import com.example.wattoit.login.data.RestClient
 import com.example.wattoit.main.FrontActivity
 import com.example.wattoit.utils.isOkResponseCode
+import com.example.wattoit.interfaces.Communicator
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 
 class SignInFragment : Fragment() {
-    var communicate: LoginCommunacator? = null
+    var communicate: Communicator? = null
     lateinit var restClient: RestClient
     lateinit var sessionManager: SessionManager
 
@@ -56,7 +58,7 @@ class SignInFragment : Fragment() {
 
                         override fun onResponse(
                             call: Call<LoginResponse>,
-                            response: retrofit2.Response<LoginResponse>
+                            response: Response<LoginResponse>
                         ) {
                             sessionManager.saveAuthToken(response.body()!!.token)
 
