@@ -9,11 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
 import com.example.wattoit.data.SessionManager
+import com.example.wattoit.interfaces.Communicator
 import com.example.wattoit.login.data.LoginResponse
 import com.example.wattoit.login.data.RestClient
 import com.example.wattoit.main.FrontActivity
 import com.example.wattoit.utils.isOkResponseCode
-import com.example.wattoit.interfaces.Communicator
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -27,7 +27,7 @@ class SignInFragment : Fragment() {
     lateinit var sessionManager: SessionManager
 
     companion object {
-        fun newInstance() = LoginActivity()
+        fun newInstance() = SignInFragment()
     }
 
     override fun onCreateView(

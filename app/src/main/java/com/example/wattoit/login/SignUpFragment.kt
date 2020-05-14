@@ -1,6 +1,5 @@
 package com.example.wattoit.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
+import com.example.wattoit.interfaces.Communicator
 import com.example.wattoit.login.data.RegistrationResponse
 import com.example.wattoit.login.data.RestClient
-import com.example.wattoit.main.ui.search.SearchFragment
 import com.example.wattoit.utils.isOkResponseCode
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 import okhttp3.RequestBody
@@ -19,11 +18,11 @@ import retrofit2.Call
 import retrofit2.Callback
 
 class SignUpFragment : Fragment() {
-    var communicate: LoginCommunacator? = null
+    var communicate: Communicator? = null
     lateinit var restClient: RestClient
 
     companion object {
-        fun newInstance() = LoginActivity()
+        fun newInstance() = SignUpFragment()
     }
 
     override fun onCreateView(
@@ -65,8 +64,10 @@ class SignUpFragment : Fragment() {
                             response: retrofit2.Response<RegistrationResponse>
                         ) {
                             if (isOkResponseCode(response.code())) {
-                                val intent = Intent(activity, SearchFragment::class.java).apply {}
-                                activity?.startActivity(intent)
+                                requireActivity().supportFragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainer, PreferencesFragment())
+                                    .addToBackStack(null)
+                                    .commit()
                             } else {
                                 Toast.makeText(
                                     activity,

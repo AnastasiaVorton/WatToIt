@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import com.example.wattoit.R
 import com.example.wattoit.interfaces.Communicator
 
-class MainActivity : AppCompatActivity(), Communacator {
+class MainActivity : AppCompatActivity(), Communicator {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val loginFragment = LoginActivity()
+        val loginFragment = LoginFragment()
         loginFragment.communicate = this
 
         supportFragmentManager.beginTransaction()
