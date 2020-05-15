@@ -11,10 +11,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-object RecipeViewModel : ViewModel() {
+class RecipeViewModel (private val client: RestClient): ViewModel() {
     class ServiceError(message: String) : RuntimeException(message)
 
-    private val client = RestClient()
 
     private var recipesMld = MutableLiveData<List<Recipe>>()
 

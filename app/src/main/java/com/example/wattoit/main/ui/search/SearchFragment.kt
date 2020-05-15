@@ -18,19 +18,18 @@ import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class SearchFragment : Fragment() {
-    private lateinit var searchViewModel: SearchViewModel
-    lateinit var restClient: RestClient
+    private val recipeViewModel: RecipeViewModel by inject()
     lateinit var adapter: RecipeAdapter
-    lateinit var recipeDatabase: RecipeDatabase
+    private val recipeDatabase: RecipeDatabase by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         val root = inflater.inflate(R.layout.activity_search, container, false).apply {
             searchButton.setOnClickListener {
                 search()
@@ -39,12 +38,6 @@ class SearchFragment : Fragment() {
                 toSaved()
             }
         }
-        searchViewModel.text.observe(viewLifecycleOwner, Observer {
-            textSearch.text = it
-        })
-
-        restClient = RestClient()
-        recipeDatabase = RecipeDatabase.getInstance(this@SearchFragment.requireContext())
 
         return root
     }
@@ -70,20 +63,20 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun putLike(recipe:Recipe){
+        GlobalScope.launch { recipeDatabase.recipeDao().insertRecipe(recipe) }
+    }
+
     private fun search() {
         val query = searchBar.text.toString()
         try {
-            RecipeViewModel.search(requireContext(), query) { recipes ->
+            recipeViewModel.search(requireContext(), query) { recipes ->
                 adapter = RecipeAdapter(
                     recipes,
                     object : MyItemOnClickListener {
                         override fun onClick(recipe: Recipe) {
-                            RecipeViewModel.lastAccessedRecipe = recipe
-
-                            // TODO: do not store recipes here
-                            GlobalScope.launch {
-                                recipeDatabase.recipeDao().insertRecipe(recipe)
-                            }
+                            recipeViewModel.lastAccessedRecipe = recipe
+                            putLike(recipe)
                         }
                     }
                 )
