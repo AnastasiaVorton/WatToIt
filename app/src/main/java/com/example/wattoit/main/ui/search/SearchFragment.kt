@@ -1,5 +1,6 @@
 package com.example.wattoit.main.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -63,8 +64,10 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun putLike(recipe:Recipe){
-        GlobalScope.launch { recipeDatabase.recipeDao().insertRecipe(recipe) }
+    private fun chooseRecipe(recipe:Recipe){
+        val intent = Intent(activity, RecipeViewActivity::class.java).apply {}
+        activity?.startActivity(intent)
+       // GlobalScope.launch { recipeDatabase.recipeDao().insertRecipe(recipe) }
     }
 
     private fun search() {
@@ -76,7 +79,7 @@ class SearchFragment : Fragment() {
                     object : MyItemOnClickListener {
                         override fun onClick(recipe: Recipe) {
                             recipeViewModel.lastAccessedRecipe = recipe
-                            putLike(recipe)
+                            chooseRecipe(recipe)
                         }
                     }
                 )

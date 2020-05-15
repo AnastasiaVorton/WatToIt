@@ -23,14 +23,4 @@
 
     <include layout="@layout/content_recipe_view" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/favoriteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:maxImageSize="36dp"
-        app:srcCompat="@drawable/ic_favorite_unset" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
