@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_recipe_view">
 
     <TextView
         android:id="@+id/recipeTitle"
@@ -14,7 +15,8 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Recipe Title" />
+        tools:text="Recipe Title"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/recipeLink"
@@ -38,7 +40,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/no_diet_labels_placeholder" />
+            android:text="@string/no_diet_labels_placeholder"
+            android:textColor="@color/colorPrimaryDark" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,7 +56,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/no_ingredients_placeholder" />
+            android:text="@string/no_ingredients_placeholder"
+            android:textColor="@color/colorPrimaryDark"/>
 
     </LinearLayout>
 
