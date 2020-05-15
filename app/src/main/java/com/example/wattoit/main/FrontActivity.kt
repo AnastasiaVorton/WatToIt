@@ -38,8 +38,6 @@ class FrontActivity : AppCompatActivity() {
             setOf(
                 R.id.nav_search,
                 R.id.nav_fav,
-                R.id.nav_recipe,
-                R.id.nav_setting,
                 R.id.nav_diet,
                 R.id.nav_log_out
             ), drawerLayout
@@ -48,12 +46,7 @@ class FrontActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
 
-        menuInflater.inflate(R.menu.front, menu)
-        return true
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)

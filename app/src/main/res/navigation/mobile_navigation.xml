@@ -18,15 +18,6 @@
             android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
             app:destination="@id/nav_search" />
         <action
-            android:id="@+id/action_nav_home_second_to_nav_fav"
-            app:destination="@id/nav_fav" />
-        <action
-            android:id="@+id/action_nav_home_second_to_nav_recipe"
-            app:destination="@id/nav_recipe" />
-        <action
-            android:id="@+id/action_nav_home_second_to_nav_setting"
-            app:destination="@id/nav_setting" />
-        <action
             android:id="@+id/action_nav_home_second_to_nav_diet"
             app:destination="@id/nav_diet" />
         <action
@@ -35,6 +26,9 @@
         <action
             android:id="@+id/action_nav_home_second_to_nav_search"
             app:destination="@id/nav_search" />
+        <action
+            android:id="@+id/action_nav_home_second_to_nav_fav"
+            app:destination="@id/nav_fav" />
     </fragment>
     <fragment
         android:id="@+id/nav_search"
@@ -44,39 +38,6 @@
 
         <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_fav"
-        android:name="com.example.wattoit.main.ui.fav.FavFragment"
-        android:label="@string/menu_fav"
-        tools:layout="@layout/fragment_fav">
-
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_recipe"
-        android:name="com.example.wattoit.main.ui.recipe.RecipeFragment"
-        android:label="@string/menu_recipe"
-        tools:layout="@layout/fragment_recipe">
-        <action
-            android:id="@+id/action_nav_recipe_to_nav_home_second"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_setting"
-        android:name="com.example.wattoit.main.ui.setting.SettingFragment"
-        android:label="@string/menu_setting"
-        tools:layout="@layout/fragment_setting">
-        <action
-            android:id="@+id/action_nav_setting_to_nav_home_second"
-            app:destination="@id/nav_home_second" />
-        <action
-            android:id="@+id/action_nav_setting_to_nav_home_second2"
             app:destination="@id/nav_home_second" />
     </fragment>
 
@@ -97,6 +58,15 @@
         tools:layout="@layout/fragment_log_out">
         <action
             android:id="@+id/action_nav_log_out_to_nav_home_second"
+            app:destination="@id/nav_home_second" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_fav"
+        android:name="com.example.wattoit.main.ui.fav.FavFragment"
+        android:label="@string/menu_fav"
+        tools:layout="@layout/fragment_fav" >
+        <action
+            android:id="@+id/action_favFragment_to_nav_home_second"
             app:destination="@id/nav_home_second" />
     </fragment>
 

@@ -1,4 +1,4 @@
-package com.example.wattoit.main.ui.search
+package com.example.wattoit.recipe
 
 import android.os.Bundle
 import android.text.util.Linkify
@@ -8,10 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.wattoit.R
 import com.example.wattoit.data.RecipeViewModel
 import com.example.wattoit.data.localDB.RecipeDatabase
-import com.example.wattoit.domain.entity.Recipe
 import com.example.wattoit.utils.downloadImage
 import kotlinx.android.synthetic.main.activity_recipe_view.*
-import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.content_recipe_view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,7 +27,7 @@ class RecipeViewActivity : AppCompatActivity() {
 
         val recipe = recipeViewModel.lastAccessedRecipe
 
-        recipeTitle.text = recipe.label//"TITLE" // TODO
+        recipeTitle.text = recipe.label
         imageFav.downloadImage(recipe.image)
         recipeLink.text = recipe.url
         Linkify.addLinks(recipeLink, Linkify.WEB_URLS)
