@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wattoit.R
+import com.example.wattoit.data.RecipeViewModel
 import kotlinx.android.synthetic.main.activity_recipe_view.*
 import kotlinx.android.synthetic.main.content_recipe_view.*
 
@@ -15,21 +16,23 @@ class RecipeViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recipe_view)
         setSupportActionBar(toolbar)
 
-        recipeTitle.text = intent.getStringExtra("TITLE")
+        val recipe = RecipeViewModel.lastAccessedRecipe
 
-        recipeLink.text = intent.getStringExtra("LINK")
+        recipeTitle.text = "TITLE" // TODO
+
+        recipeLink.text = recipe.url
         Linkify.addLinks(recipeLink, Linkify.WEB_URLS)
 
-        fillListView(recipeDietLabels, intent.getCharSequenceArrayExtra("DIET_LABELS"))
+        fillListView(recipeDietLabels, recipe.dietLabels)
 
-        fillListView(recipeIngredients, intent.getCharSequenceArrayExtra("INGREDIENTS"))
+        fillListView(recipeIngredients, recipe.ingredientLines)
 
         favoriteButton.setOnClickListener {
             TODO("Store current one as liked recipe")
         }
     }
 
-    private fun fillListView(view: LinearLayout, dietLabels: Array<CharSequence>) {
+    private fun fillListView(view: LinearLayout, dietLabels: List<String>) {
         if (dietLabels.isNotEmpty()) {
             view.removeAllViews()
             for (label in dietLabels) {

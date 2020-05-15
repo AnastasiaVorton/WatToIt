@@ -78,6 +78,9 @@ class SearchFragment : Fragment() {
                     recipes,
                     object : MyItemOnClickListener {
                         override fun onClick(recipe: Recipe) {
+                            RecipeViewModel.lastAccessedRecipe = recipe
+
+                            // TODO: do not store recipes here
                             GlobalScope.launch {
                                 recipeDatabase.recipeDao().insertRecipe(recipe)
                             }

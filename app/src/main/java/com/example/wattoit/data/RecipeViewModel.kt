@@ -48,6 +48,9 @@ object RecipeViewModel : ViewModel() {
 
     private var lastAccessedRecipeMld = MutableLiveData<Recipe>()
 
-    val lastAccessedRecipe
+    var lastAccessedRecipe
+        set(value) {
+            lastAccessedRecipeMld.value = value
+        }
         get() = lastAccessedRecipeMld.value ?: throw ServiceError("No last accessed recipe set")
 }
