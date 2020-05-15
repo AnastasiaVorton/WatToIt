@@ -34,4 +34,8 @@ class SessionManager(context: Context) {
     fun fetchAuthToken(): String? {
         return prefs.getString(AUTH_TOKEN, null)
     }
+
+    fun deleteAuthToken() {
+        prefs.edit().remove(AUTH_TOKEN).apply()
+    }
 }

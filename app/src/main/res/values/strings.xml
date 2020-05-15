@@ -26,4 +26,6 @@
     <string name="no_diet_labels_placeholder">No diet labels assigned</string>
     <string name="no_ingredients_placeholder">No ingredients required for this recipe</string>
     <string name="saved_recipes_button_text">Saved recipes</string>
+    <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
+    <string name="log_out">Log out</string>
 </resources>
