@@ -9,22 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.wattoit.R
+import com.example.wattoit.data.RecipeViewModel
+import org.koin.android.ext.android.inject
 
 class RecipeFragment : Fragment() {
-    private lateinit var recipeViewModel: RecipeViewModel
+//    private var recipeViewModel: RecipeViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        recipeViewModel =
-            ViewModelProviders.of(this).get(RecipeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_recipe, container, false)
         val textView: TextView = root.findViewById(R.id.text_recipe)
-        recipeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 }

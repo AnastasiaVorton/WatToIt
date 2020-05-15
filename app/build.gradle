@@ -78,4 +78,6 @@ dependencies {
     // Retrofit support library which allows to work with Rest API
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.github.ajalt:timberkt:1.5.1'
+    implementation 'org.koin:koin-android-viewmodel:2.0.1'
 }

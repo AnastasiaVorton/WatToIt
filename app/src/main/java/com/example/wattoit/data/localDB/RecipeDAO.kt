@@ -11,6 +11,10 @@ interface RecipeDAO {
     @Query("SELECT * FROM Recipe")
     suspend fun getSaved(): List<Recipe>
 
+
+    @Query("DELETE FROM Recipe")
+    fun deleteAll()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecipe(recipe: Recipe): Long
 }

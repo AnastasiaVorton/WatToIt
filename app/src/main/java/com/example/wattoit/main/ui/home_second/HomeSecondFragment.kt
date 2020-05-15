@@ -14,7 +14,6 @@ class HomeSecondFragment : Fragment() {
             HomeSecondFragment()
     }
 
-    private lateinit var viewModel: HomeSecondViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +24,5 @@ class HomeSecondFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeSecondViewModel::class.java)
     }
 }

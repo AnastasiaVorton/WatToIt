@@ -13,8 +13,6 @@ class LogOutFragment : Fragment() {
         fun newInstance() = LogOutFragment()
     }
 
-    private lateinit var viewModel: LogOutViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +22,5 @@ class LogOutFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LogOutViewModel::class.java)
     }
 }
