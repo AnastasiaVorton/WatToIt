@@ -1,5 +1,6 @@
 package com.example.wattoit.main.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.wattoit.R
 import com.example.wattoit.data.RecipeViewModel
 import com.example.wattoit.data.localDB.RecipeDatabase
 import com.example.wattoit.domain.entity.Recipe
+import com.example.wattoit.recipe.RecipeViewActivity
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.view.*
 import kotlinx.coroutines.GlobalScope
@@ -31,37 +33,15 @@ class SearchFragment : Fragment() {
             searchButton.setOnClickListener {
                 search()
             }
-            showSavedButton.setOnClickListener {
-                toSaved()
-            }
         }
 
         return root
     }
 
-    private fun toSaved() {
-        GlobalScope.launch {
-            val all = recipeDatabase.recipeDao().getSaved()
-
-            requireActivity().runOnUiThread {
-                adapter = RecipeAdapter(
-                    all,
-                    object :
-                        MyItemOnClickListener {
-                        override fun onClick(recipe: Recipe) {
-                            println("hi babe")
-                        }
-                    }
-                )
-                recipesRView.layoutManager =
-                    LinearLayoutManager(this@SearchFragment.requireContext())
-                recipesRView.adapter = adapter
-            }
-        }
-    }
-
-    private fun putLike(recipe:Recipe){
-        GlobalScope.launch { recipeDatabase.recipeDao().insertRecipe(recipe) }
+    private fun chooseRecipe(recipe: Recipe) {
+        val intent = Intent(activity, RecipeViewActivity::class.java).apply {}
+        activity?.startActivity(intent)
+        // GlobalScope.launch { recipeDatabase.recipeDao().insertRecipe(recipe) }
     }
 
     private fun search() {
@@ -73,7 +53,7 @@ class SearchFragment : Fragment() {
                     object : MyItemOnClickListener {
                         override fun onClick(recipe: Recipe) {
                             recipeViewModel.lastAccessedRecipe = recipe
-                            putLike(recipe)
+                            chooseRecipe(recipe)
                         }
                     }
                 )

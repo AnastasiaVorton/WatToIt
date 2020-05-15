@@ -9,14 +9,7 @@
             android:id="@+id/nav_fav"
             android:icon="@drawable/ic_favorite_black_24dp"
             android:title="@string/menu_fav" />
-        <item
-            android:id="@+id/nav_recipe"
-            android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="@string/menu_recipe" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_settings_black_24dp"
-            android:title="@string/menu_setting" />
+
         <item
             android:id="@+id/nav_diet"
             android:icon="@drawable/ic_whatshot_black_24dp"

@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#5f464b</color>
     <color name="colorAccent">#8e4a49</color>
     <color name="white">#ffffff</color>
+    <color name="ic_recipe_background">#FFFFFF</color>
 </resources>
