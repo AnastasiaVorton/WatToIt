@@ -12,6 +12,7 @@ import com.example.wattoit.login.data.RegistrationResponse
 import com.example.wattoit.login.data.RestClient
 import com.example.wattoit.main.ui.search.SearchFragment
 import com.example.wattoit.utils.isOkResponseCode
+import com.github.ajalt.timberkt.Timber
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -54,6 +55,7 @@ class SignUpFragment : Fragment() {
                 .enqueue(
                     object : Callback<RegistrationResponse> {
                         override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
+                            Timber.d{"Registration failed"}
                             Toast.makeText(
                                 activity,
                                 "Error", Toast.LENGTH_LONG

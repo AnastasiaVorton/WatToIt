@@ -13,6 +13,7 @@ import com.example.wattoit.login.data.LoginResponse
 import com.example.wattoit.login.data.RestClient
 import com.example.wattoit.main.FrontActivity
 import com.example.wattoit.utils.isOkResponseCode
+import com.github.ajalt.timberkt.Timber
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -48,6 +49,7 @@ class SignInFragment : Fragment() {
                 .enqueue(
                     object : Callback<LoginResponse> {
                         override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            Timber.d{"Error while login"}
                             Toast.makeText(
                                 activity,
                                 "Error", Toast.LENGTH_LONG
