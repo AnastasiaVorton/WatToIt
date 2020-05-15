@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wattoit.R
 import com.example.wattoit.data.RecipeViewModel
 import com.example.wattoit.data.localDB.RecipeDatabase
 import com.example.wattoit.domain.entity.Recipe
-import com.example.wattoit.login.data.RestClient
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.view.*
 import kotlinx.coroutines.GlobalScope

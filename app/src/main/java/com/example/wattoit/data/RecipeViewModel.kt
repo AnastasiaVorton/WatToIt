@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.wattoit.domain.entity.Recipe
-import com.example.wattoit.login.data.RecipeSearchResponse
-import com.example.wattoit.login.data.RestClient
 import com.example.wattoit.utils.isOkResponseCode
 import com.github.ajalt.timberkt.Timber
 import retrofit2.Call
@@ -38,7 +36,11 @@ class RecipeViewModel (private val client: RestClient): ViewModel() {
                             Timber.d{"Response has no body"}
                             throw ServiceError("Response has no body")
                         } else {
-                            recipesMld.value = response.body()!!.recipes.map { e -> e.recipe }
+                            if (response.body()!!.recipes == null) {
+                                Timber.d{"No recipes found"}
+                                throw ServiceError("No recipes found")
+                            }
+                            recipesMld.value = response.body()!!.recipes?.map { e -> e.recipe }
                             callback(recipes)
                         }
                     } else {

@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
-import com.example.wattoit.login.data.RegistrationResponse
-import com.example.wattoit.login.data.RestClient
+import com.example.wattoit.data.RegistrationResponse
+import com.example.wattoit.data.RestClient
 import com.example.wattoit.main.ui.search.SearchFragment
 import com.example.wattoit.utils.isOkResponseCode
 import com.github.ajalt.timberkt.Timber
@@ -67,8 +67,10 @@ class SignUpFragment : Fragment() {
                             response: retrofit2.Response<RegistrationResponse>
                         ) {
                             if (isOkResponseCode(response.code())) {
-                                val intent = Intent(activity, SearchFragment::class.java).apply {}
-                                activity?.startActivity(intent)
+                                requireActivity().supportFragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainer, PreferencesFragment())
+                                    .addToBackStack(null)
+                                    .commit()
                             } else {
                                 Toast.makeText(
                                     activity,

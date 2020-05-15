@@ -1,4 +1,4 @@
-package com.example.wattoit.login.data
+package com.example.wattoit.data
 
 import com.example.wattoit.domain.entity.Recipe
 import com.google.gson.annotations.SerializedName
@@ -25,7 +25,7 @@ data class RecipeSearchResponse(
     val successCode: Int,
 
     @SerializedName("data")
-    val recipes: List<RecipeResponse>
+    val recipes: List<RecipeResponse>?
 )
 
 data class RecipeResponse(
