@@ -60,12 +60,22 @@ class SignInFragment : Fragment() {
                             call: Call<LoginResponse>,
                             response: retrofit2.Response<LoginResponse>
                         ) {
-                            sessionManager.saveAuthToken(response.body()!!.token)
+                            if (isOkResponseCode(response.code())){
+                                sessionManager.saveAuthToken(response.body()!!.token)
 
-                            if (isOkResponseCode(response.code())) {
-                                val intent = Intent(activity, FrontActivity::class.java).apply {}
-                                activity?.startActivity(intent)
+                                if (isOkResponseCode(response.code())) {
+                                    val intent = Intent(activity, FrontActivity::class.java).apply {}
+                                    activity?.startActivity(intent)
+                                }
+                            } else {
+                                Timber.d{"Wrong login or password"}
+                                Toast.makeText(
+                                    this@SignInFragment.context,
+                                    "Wrong login or password",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
+
                         }
                     }
                 )
