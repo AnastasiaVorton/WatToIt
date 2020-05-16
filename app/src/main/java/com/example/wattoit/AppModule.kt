@@ -2,6 +2,7 @@ package com.example.wattoit
 
 import android.content.Context
 import com.example.wattoit.data.RecipeViewModel
+import com.example.wattoit.data.SessionManager
 import com.example.wattoit.data.localDB.RecipeDatabase
 import com.example.wattoit.data.RestClient
 import com.example.wattoit.data.SessionManager
