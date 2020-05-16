@@ -28,4 +28,13 @@
     <string name="saved_recipes_button_text">Saved recipes</string>
     <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
     <string name="log_out">Log out</string>
+    <string name="preferences_text">We care about your dietary preferences, so we kindly ask you to choose your one preferred diet. We will take that into account when searching for the recipes</string>
+    <string name="balanced">Balanced</string>
+    <string name="high_fiber">High-Fiber</string>
+    <string name="high_protein">High-Protein</string>
+    <string name="low_carb">Low-Carb</string>
+    <string name="low_fat">Low-Fat</string>
+    <string name="low_sodium">Low-Sodium</string>
+    <string name="save">Save</string>
+    <string name="none">None</string>
 </resources>

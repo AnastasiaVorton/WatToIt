@@ -1,10 +1,7 @@
-package com.example.wattoit.login.data
+package com.example.wattoit.data
 
 import android.content.Context
 import com.example.wattoit.BuildConfig
-import com.example.wattoit.data.AuthInterceptor
-import com.example.wattoit.data.RecipeService
-import com.example.wattoit.data.SearchService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

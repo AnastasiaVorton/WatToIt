@@ -4,7 +4,8 @@ import android.content.Context
 import com.example.wattoit.data.RecipeViewModel
 import com.example.wattoit.data.SessionManager
 import com.example.wattoit.data.localDB.RecipeDatabase
-import com.example.wattoit.login.data.RestClient
+import com.example.wattoit.data.RestClient
+import com.example.wattoit.data.SessionManager
 import org.koin.dsl.module
 
 fun createAppModule(context: Context) = module {
