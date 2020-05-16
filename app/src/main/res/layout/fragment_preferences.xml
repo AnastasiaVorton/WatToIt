@@ -68,12 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/low_sodium" />
-
-        <RadioButton
-            android:id="@+id/noneRadio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/none" />
     </RadioGroup>
 
     <Button

@@ -37,6 +37,7 @@ class LogOutFragment : Fragment() {
             sessionManager.deleteAuthToken()
 
             val intent = Intent(activity, MainActivity::class.java).apply {}
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             activity?.startActivity(intent)
         }
     }

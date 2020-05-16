@@ -1,8 +1,6 @@
 package com.example.wattoit.login
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
@@ -20,7 +18,6 @@ class MainActivity : AppCompatActivity(), LoginCommunacator {
             .addToBackStack(null)
             .commit()
     }
-
 
 
     override fun loginButtonsHandler(buttonType: String) {
