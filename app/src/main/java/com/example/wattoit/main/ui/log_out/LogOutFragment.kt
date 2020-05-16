@@ -10,9 +10,11 @@ import com.example.wattoit.R
 import com.example.wattoit.data.SessionManager
 import com.example.wattoit.login.MainActivity
 import kotlinx.android.synthetic.main.fragment_log_out.*
+import org.koin.android.ext.android.inject
 
 class LogOutFragment : Fragment() {
-    lateinit var sessionManager: SessionManager
+    private val sessionManager: SessionManager by inject()
+
     companion object {
         fun newInstance() = LogOutFragment()
     }
@@ -31,7 +33,6 @@ class LogOutFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        sessionManager = SessionManager(requireActivity().applicationContext)
         logOutButton.setOnClickListener {
             sessionManager.deleteAuthToken()
 
