@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/nav_diet"
-        android:name="com.example.wattoit.main.ui.diet.DietFragment"
+        android:name="com.example.wattoit.login.PreferencesFragment"
         android:label="@string/menu_diet"
         tools:layout="@layout/fragment_diet">
         <action

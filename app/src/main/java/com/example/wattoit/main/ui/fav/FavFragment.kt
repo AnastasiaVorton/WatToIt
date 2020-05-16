@@ -20,8 +20,6 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class FavFragment : Fragment() {
-
-
     private val recipeViewModel: RecipeViewModel by inject()
     lateinit var adapter: RecipeAdapter
     lateinit var recipeDatabase: RecipeDatabase
