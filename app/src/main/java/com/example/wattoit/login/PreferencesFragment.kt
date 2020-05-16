@@ -21,6 +21,15 @@ import retrofit2.Callback
 
 class PreferencesFragment : Fragment() {
     private val restClient: RestClient by inject()
+    private val diets: Map<String, String> = mapOf(
+        "Balanced" to "balanced",
+        "High-Fiber" to "high_fiber",
+        "High-Protein" to "high_protein",
+        "Low-Carb" to "low_carb",
+        "Low-Fat" to "low_fat",
+        "Low-Sodium" to "low_sodium",
+        "None" to "none"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,15 +48,15 @@ class PreferencesFragment : Fragment() {
         savePreferencesButton.setOnClickListener {
             val selectedDietId: Int = radioGroup.checkedRadioButtonId
             val dietRadio: RadioButton = requireActivity().findViewById(selectedDietId)
-            val dietText = dietRadio.text.toString().toLowerCase()
+            val dietText = dietRadio.text.toString()
 
             restClient.getApiService(requireActivity().applicationContext)
-                .setDiet(DietBody(dietText)).enqueue(
+                .setDiet(DietBody(diets[dietText])).enqueue(
                     object : Callback<RegistrationResponse> {
                         override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
                             Toast.makeText(
                                 activity,
-                                "Error", Toast.LENGTH_LONG
+                                "Error while setting diet", Toast.LENGTH_LONG
                             ).show()
                         }
 

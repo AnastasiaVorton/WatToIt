@@ -10,18 +10,20 @@ import androidx.fragment.app.Fragment
 import com.example.wattoit.R
 import com.example.wattoit.data.RegistrationResponse
 import com.example.wattoit.data.RestClient
-import com.example.wattoit.main.ui.search.SearchFragment
+import com.example.wattoit.data.SessionManager
 import com.example.wattoit.utils.isOkResponseCode
 import com.github.ajalt.timberkt.Timber
 import kotlinx.android.synthetic.main.sign_up_fragment.*
 import okhttp3.RequestBody
 import org.json.JSONObject
+import org.koin.android.ext.android.inject
 import retrofit2.Call
 import retrofit2.Callback
 
 class SignUpFragment : Fragment() {
     var communicate: LoginCommunacator? = null
     lateinit var restClient: RestClient
+    private val sessionManager: SessionManager by inject()
 
     companion object {
         fun newInstance() = LoginActivity()
@@ -67,6 +69,7 @@ class SignUpFragment : Fragment() {
                             response: retrofit2.Response<RegistrationResponse>
                         ) {
                             if (isOkResponseCode(response.code())) {
+                                sessionManager.saveAuthToken(response.body()!!.token)
                                 requireActivity().supportFragmentManager.beginTransaction()
                                     .replace(R.id.fragmentContainer, PreferencesFragment())
                                     .addToBackStack(null)

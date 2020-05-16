@@ -17,7 +17,9 @@ data class LoginResponse(
 
 data class RegistrationResponse(
     @SerializedName("success")
-    val successCode: Int
+    val successCode: Int,
+    @SerializedName("token")
+    val token: String
 )
 
 data class RecipeSearchResponse(
