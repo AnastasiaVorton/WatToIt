@@ -21,7 +21,7 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 listOf(
-                    createAppModule()
+                    createAppModule(this@App)
                 )
             )
         }

@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wattoit.R
 import com.example.wattoit.data.SessionManager
-import com.example.wattoit.login.data.LoginResponse
-import com.example.wattoit.login.data.RestClient
+import com.example.wattoit.data.LoginResponse
+import com.example.wattoit.data.RestClient
 import com.example.wattoit.main.FrontActivity
 import com.example.wattoit.utils.isOkResponseCode
 import com.github.ajalt.timberkt.Timber
