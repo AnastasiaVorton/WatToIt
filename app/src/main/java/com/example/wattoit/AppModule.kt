@@ -7,9 +7,9 @@ import com.example.wattoit.data.localDB.RecipeDatabase
 import com.example.wattoit.data.RestClient
 import org.koin.dsl.module
 
-fun createAppModule(context: Context) = module {
+fun createAppModule() = module {
     single { RestClient() }
     single { RecipeViewModel(get()) }
     single { RecipeDatabase.getInstance(get()) }
-    single { SessionManager(context)}
+    single { SessionManager(get())}
 }

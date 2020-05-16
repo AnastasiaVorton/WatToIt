@@ -11,7 +11,6 @@ import com.example.wattoit.R
 import com.example.wattoit.data.RecipeViewModel
 import com.example.wattoit.data.localDB.RecipeDatabase
 import com.example.wattoit.domain.entity.Recipe
-import com.example.wattoit.data.RestClient
 import com.example.wattoit.main.ui.search.MyItemOnClickListener
 import com.example.wattoit.main.ui.search.RecipeAdapter
 import com.example.wattoit.recipe.RecipeViewActivity
@@ -22,7 +21,6 @@ import org.koin.android.ext.android.inject
 
 class FavFragment : Fragment() {
     private val recipeViewModel: RecipeViewModel by inject()
-    lateinit var restClient: RestClient
     lateinit var adapter: RecipeAdapter
     lateinit var recipeDatabase: RecipeDatabase
     override fun onCreateView(
@@ -31,7 +29,6 @@ class FavFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        restClient = RestClient()
         recipeDatabase = RecipeDatabase.getInstance(this@FavFragment.requireContext())
 
         return inflater.inflate(R.layout.fragment_fav, container, false).apply {
